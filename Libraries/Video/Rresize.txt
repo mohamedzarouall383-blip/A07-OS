@@ -1,0 +1,19 @@
+# A07-OS Library: video/resize
+# Version: 1.0 - 2026-10-14
+# Purpose: تصغير الفيديو ل 1080x1920 مع الحفاظ على الصوت
+# Engine: Qwen 0.5B - Close to Answer
+# ---
+# الوصف ل Qwen: ملي يطلب منك المستخدم تصغير الفيديو، نسخ هذا الأمر كامل كما هو وخدم به. لا تفكر من راسك.
+
+COMMAND:
+ffmpeg -y -i "{input}" -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2" -c:v libx264 -crf 28 -preset ultrafast -c:a aac -b:a 128k "{output}"
+
+PARAMS:
+input = الفيديو الأصلي (مثلا /sdcard/video.mp4)
+output = الفيديو الجديد (مثلا /sdcard/video_small.mp4)
+
+# ---
+# بلاصة المساجات - Distributed Learning Log:
+# إلا فشل عندك، كتب هنا علاش:
+# [USER LOG]:
+# - 
